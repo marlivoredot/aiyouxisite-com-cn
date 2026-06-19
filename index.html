@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 轻简指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f5f7fa;
+            color: #1e1e2a;
+            line-height: 1.7;
+        }
+
+        /* 导航 */
+        .nav {
+            background-color: #1b1c27;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .nav .logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #eaeef3;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.25s, color 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+            border-bottom-color: #facc15;
+        }
+
+        /* 深色头图 hero */
+        .hero {
+            background: linear-gradient(145deg, #0f111a 0%, #1e222f 100%);
+            color: #eef2f6;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 1.2rem;
+            font-size: 1.1rem;
+            color: #bcc7db;
+        }
+
+        .hero a {
+            color: #facc15;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .hero a:hover {
+            color: #ffe15a;
+        }
+
+        /* 浅色正文区 */
+        .section-light {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3.5rem 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            color: #222;
+            border-left: 5px solid #facc15;
+            padding-left: 1rem;
+        }
+
+        .intro-text {
+            font-size: 1.05rem;
+            color: #2c2c38;
+            margin-bottom: 2.5rem;
+        }
+
+        .intro-text a {
+            color: #c27803;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .intro-text a:hover {
+            color: #a35f00;
+        }
+
+        /* 三个场景模块 */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0 1.5rem;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 1.6rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e9edf2;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.06);
+        }
+
+        .scene-card h3 {
+            font-size: 1.35rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #1b1c27;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scene-card p {
+            color: #3b3b4a;
+            font-size: 0.95rem;
+        }
+
+        .scene-card a {
+            color: #c27803;
+            text-decoration: underline;
+        }
+
+        .scene-card a:hover {
+            color: #945f00;
+        }
+
+        /* 常见说明 / faq 摘要 */
+        .faq-summary {
+            margin-top: 3rem;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.2rem 2.5rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .faq-summary h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: #1f1f2b;
+        }
+
+        .faq-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #1b1c27;
+        }
+
+        .faq-item p {
+            color: #3f3f4e;
+            font-size: 0.95rem;
+        }
+
+        .faq-item a {
+            color: #c27803;
+            text-decoration: underline;
+        }
+
+        .faq-item a:hover {
+            color: #945f00;
+        }
+
+        /* footer */
+        .footer {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: #1b1c27;
+            color: #9aa4b8;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #facc15;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            .section-light {
+                padding: 2rem 1.2rem;
+            }
+            .faq-summary {
+                padding: 1.8rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1rem 2.5rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .scenes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 导航 -->
+    <nav class="nav">
+        <span class="logo">爱游戏 · 轻指南</span>
+        <ul class="nav-links">
+            <li><a href="#intro">概述</a></li>
+            <li><a href="#scenes">场景</a></li>
+            <li><a href="#faq">提醒</a></li>
+        </ul>
+    </nav>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>简明指南 · 爱游戏</h1>
+        <p>
+            从日常中寻找放松，用轻量方式探索你感兴趣的互动内容。
+            无论你是刚开始接触，还是想找一些新思路，这里有一份安静的路线。
+            <a href="https://aiyouxisite.com.cn">爱游戏</a> 提供多样的选择，帮你更自在地找到合适的方向。
+        </p>
+        <p style="font-size:0.9rem; opacity:0.7; margin-top:0.5rem;">轻松浏览 · 保持好奇</p>
+    </header>
+
+    <!-- 核心介绍 + 三个场景模块 -->
+    <section class="section-light" id="intro">
+        <h2 class="section-title">从这里开始</h2>
+        <div class="intro-text">
+            <p>
+                很多人把游戏当作放松的调剂，也有人用它来激发灵感。其实不需要太多设备或技巧，只要一个安稳的午后，打开 
+                <a href="https://aiyouxisite.com.cn">爱游戏</a>，你就能看到许多风格各异的作品与内容。 
+                这个站点就是为那些想要“随便看看，不费力气”的人准备的。
+            </p>
+            <p style="margin-top:1rem;">
+                下面三个场景覆盖了大多数人的日常状态，你可以对号入座，也可以随意逛逛。
+            </p>
+        </div>
+
+        <div class="scenes-grid" id="scenes">
+            <div class="scene-card">
+                <h3>☕ 通勤 · 小憩</h3>
+                <p>
+                    几分钟的空隙，不需要复杂操作。打开 
+                    <a href="https://aiyouxisite.com.cn">爱游戏</a> 
+                    找点轻量内容，翻翻推荐，像读一篇短文章一样自然。不用追赶进度，累了就放下。
+                </p>
+            </div>
+            <div class="scene-card">
+                <h3>🛋️ 周末 · 放空</h3>
+                <p>
+                    有整块时间，但不想太正式。从 
+                    <a href="https://aiyouxisite.com.cn">爱游戏</a> 
+                    挑一款叙事向或探索类的作品，沉浸一两个小时，像看一部慢电影。节奏完全由你控制。
+                </p>
+            </div>
+            <div class="scene-card">
+                <h3>📚 学习 · 灵感</h3>
+                <p>
+                    有些游戏本身就像艺术、逻辑或人文的载体。通过 
+                    <a href="https://aiyouxisite.com.cn">爱游戏</a> 
+                    发现独特的机制或故事，也能给你的创作或思考带来一点不一样的角度。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <section class="section-light" style="padding-top:0;" id="faq">
+        <div class="faq-summary">
+            <h2>常见说明 · 访问提醒</h2>
+
+            <div class="faq-item">
+                <strong>💡 访问前需要准备什么？</strong>
+                <p>
+                    只要一个现代浏览器和稳定的网络就够了。不需要注册或下载额外软件。 
+                    <a href="https://aiyouxisite.com.cn">爱游戏</a> 
+                    上的内容大多可直接在页面里体验，非常轻量。
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <strong>🌐 语言与地区限制</strong>
+                <p>
+                    目前主要面向中文用户。部分内容可能因地区差异略有不同，但绝大多数都可以顺畅访问。如果遇到加载慢，可以稍后再试。
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <strong>🔒 隐私与安全</strong>
+                <p>
+                    站点不会主动收集个人隐私。浏览时建议保持常规安全意识，不透露敏感信息。
+                    <a href="https://aiyouxisite.com.cn">爱游戏</a> 
+                    本身是正规内容聚合，请放心使用。
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <strong>📱 手机浏览体验</strong>
+                <p>
+                    页面适配了手机屏幕，横竖屏都能获得不错的效果。如果遇到排版异常，可以尝试刷新或更换浏览器。
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <strong>🎯 怎样找到适合自己的内容？</strong>
+                <p>
+                    先随便看看分类或推荐列表，不用抱着必须找到什么的心态。有时候意外的发现反而更让人开心。
+                    从 <a href="https://aiyouxisite.com.cn">爱游戏</a> 首页开始，慢慢逛就好。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+        <p>保持简单 · 保持好奇 · <a href="https://aiyouxisite.com.cn">爱游戏</a></p>
+        <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.6;">© 2025 · 轻量指南页</p>
+    </footer>
+
+</body>
+</html>
