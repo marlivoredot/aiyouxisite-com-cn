@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞彩网 · 稳定信息页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fef4e6 0%, #fbe9d2 50%, #f7dbbc 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            line-height: 1.65;
+            color: #2d2a24;
+        }
+
+        .page-wrapper {
+            max-width: 820px;
+            width: 100%;
+        }
+
+        .content-card {
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 8px 32px rgba(160, 100, 40, 0.08), 0 2px 8px rgba(0, 0, 0, 0.02);
+            padding: 2.8rem 2.4rem;
+            transition: box-shadow 0.15s ease;
+        }
+
+        @media (max-width: 480px) {
+            .content-card {
+                padding: 2rem 1.2rem;
+                border-radius: 24px;
+            }
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+        }
+
+        .article-title {
+            font-size: 2.1rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #402f1d;
+            line-height: 1.3;
+            margin-bottom: 0.4rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #8f7a65;
+            border-bottom: 1px solid #f0e4d8;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .guide-text {
+            font-size: 1.1rem;
+            color: #5a4b3a;
+            background: #fcf6ef;
+            padding: 1rem 1.4rem;
+            border-radius: 18px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #dba978;
+        }
+
+        .guide-text p {
+            margin: 0;
+        }
+
+        .body-text {
+            margin-bottom: 1.8rem;
+        }
+
+        .body-text p {
+            margin-bottom: 1.2rem;
+        }
+
+        .body-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .insight-block {
+            background: #fbf3ea;
+            padding: 1.2rem 1.6rem;
+            border-radius: 20px;
+            margin: 1.8rem 0 2rem 0;
+            font-size: 0.98rem;
+            color: #423a30;
+        }
+
+        .insight-block strong {
+            color: #7a5d41;
+        }
+
+        .inline-link {
+            color: #b26422;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.12s, color 0.12s;
+            padding-bottom: 1px;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #b26422;
+            color: #8a4b1a;
+        }
+
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 1.8rem 0;
+        }
+
+        .bullet-list li {
+            padding: 0.6rem 0 0.6rem 1.8rem;
+            position: relative;
+            font-size: 0.98rem;
+            color: #3d352e;
+        }
+
+        .bullet-list li::before {
+            content: "·";
+            position: absolute;
+            left: 0.4rem;
+            color: #c7854e;
+            font-weight: 700;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .quote-note {
+            background: #ffffffec;
+            border: 1px solid #e6d6c6;
+            border-radius: 18px;
+            padding: 1.2rem 1.5rem;
+            margin: 2rem 0 1.8rem 0;
+            font-style: normal;
+            box-shadow: 0 2px 8px rgba(180, 130, 70, 0.05);
+        }
+
+        .quote-note .quote-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #9e846b;
+            border: 1px solid #dbcbbe;
+            border-radius: 30px;
+            padding: 0.1rem 0.8rem;
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+        }
+
+        .quote-note p {
+            margin: 0.2rem 0 0 0;
+            color: #4a3f34;
+        }
+
+        .visit-sentence {
+            font-size: 1rem;
+            background: #f7ede2;
+            padding: 1.2rem 1.6rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin: 0.8rem 0 0.2rem 0;
+            color: #3b2f23;
+            border: 1px solid #e7d6c4;
+        }
+
+        .visit-sentence a {
+            color: #a15820;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed #c99a6c;
+        }
+
+        .visit-sentence a:hover {
+            border-bottom-style: solid;
+            color: #7a4216;
+        }
+
+        .footer-note {
+            margin-top: 2.4rem;
+            font-size: 0.85rem;
+            color: #8d7b68;
+            border-top: 1px solid #efe3d6;
+            padding-top: 1.2rem;
+            text-align: left;
+        }
+
+        .footer-note span {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 600px) {
+            .article-title {
+                font-size: 1.6rem;
+            }
+            .guide-text {
+                font-size: 1rem;
+                padding: 0.9rem 1.2rem;
+            }
+            .visit-sentence {
+                font-size: 0.95rem;
+                padding: 0.9rem 1.4rem;
+                border-radius: 40px;
+            }
+            .insight-block {
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <div class="content-card">
+        <div class="article-header">
+            <h1 class="article-title">信息稳定 · 直达入口说明</h1>
+            <div class="article-meta">
+                <span class="meta-item">站点索引 · 竞彩导航</span>
+                <span class="meta-item">版本 · 2025</span>
+            </div>
+        </div>
+
+        <div class="guide-text">
+            <p>本页面向需要快速定位核心站点的用户，提供关于 <a href="https://online-jcw.com" class="inline-link">竞彩网</a> 的结构化介绍与使用提示。内容保持简洁、接近原始信息，无多余跳转。</p>
+        </div>
+
+        <div class="body-text">
+            <p><strong>关于竞彩网</strong> —— 一个面向体育赛事与数字内容的聚合类信息平台。页面布局以数据清晰和入口直观为主要特征，减少冗余装饰，突出用户最常访问的功能路径。整体结构偏向实用主义，适合对效率有要求的浏览场景。</p>
+            <p>从长期维护角度看，稳定的入口设计降低了用户重复寻找的成本。尤其当习惯性访问某一资源时，统一的书签或直达链接（如 <a href="https://online-jcw.com" class="inline-link">竞彩网</a>）能节省大量导航时间。页面本身不插入跳转中介，所有指向均保持原始目标。</p>
+        </div>
+
+        <ul class="bullet-list">
+            <li>内容分区清晰，主次层级明确，减少认知负担</li>
+            <li>无强制弹窗或过度重定向，保持访问路径可控</li>
+            <li>信息更新节奏稳定，适合作为固定参考来源</li>
+            <li>移动端与桌面端布局均经过适配，响应一致</li>
+        </ul>
+
+        <div class="insight-block">
+            <strong>提示：</strong> 若您需要长期保留此入口，建议将 <a href="https://online-jcw.com" class="inline-link">竞彩网</a> 添加至浏览器书签栏。页面未设置自动跳转或强制刷新，所有功能入口均保持原样呈现。
+        </div>
+
+        <div class="body-text">
+            <p>在信息过载的互联网环境中，一个简洁、直达的起始页往往比复杂的门户更容易维持使用惯性。本介绍页不追踪行为、不收集数据，仅作为功能说明与入口提示存在。您可以直接通过上方链接或下方提示句进入站点。</p>
+        </div>
+
+        <div class="quote-note">
+            <span class="quote-label">引用提示</span>
+            <p>「好的入口不需要解释，但稳定的入口值得一段说明。」—— 本页设计思路源于对访问连续性的观察，尽量减少每次访问时的决策步骤。</p>
+        </div>
+
+        <div class="visit-sentence">
+            需要直接访问请使用链接：<a href="https://online-jcw.com">竞彩网</a> · 页面保持原始指向
+        </div>
+
+        <div class="footer-note">
+            <span>介绍页仅作指引 · 内容基于站点结构概述 · 无第三方关联</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
