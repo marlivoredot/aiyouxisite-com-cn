@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简明指南 – milan.com 产品说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f7f9;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2c31;
+            padding: 1.5rem;
+        }
+
+        .wrapper {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* header / hero */
+        .hero {
+            background: linear-gradient(145deg, #dceef2 0%, #b8dbe3 100%);
+            border-radius: 2rem 2rem 1rem 1rem;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 20px rgba(30, 70, 80, 0.08);
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #004d5e;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #1f5a67;
+            max-width: 600px;
+            border-left: 4px solid #007d8f;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .hero .highlight-link {
+            display: inline-block;
+            margin-top: 1.25rem;
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .hero .highlight-link a {
+            color: #005f70;
+            text-decoration: none;
+            border-bottom: 2px solid #0094a8;
+            transition: border-color 0.2s;
+        }
+
+        .hero .highlight-link a:hover {
+            border-bottom-color: #003d48;
+        }
+
+        /* 网格卡片 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 1.25rem;
+            padding: 1.5rem 1.25rem;
+            box-shadow: 0 4px 10px rgba(0, 80, 95, 0.06);
+            border: 1px solid #e1f0f3;
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 100, 110, 0.08);
+        }
+
+        .card .icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #008396;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #004854;
+            margin: 0.5rem 0 0.35rem;
+        }
+
+        .card p {
+            color: #2f4952;
+            font-size: 0.95rem;
+        }
+
+        .card .small-note {
+            font-size: 0.85rem;
+            color: #5c7a82;
+            display: block;
+            margin-top: 0.5rem;
+            border-top: 1px dashed #c9e0e6;
+            padding-top: 0.5rem;
+        }
+
+        /* 提示区块 */
+        .tip-block {
+            background: #e5f4f7;
+            border-radius: 1.5rem;
+            padding: 1.75rem 2rem;
+            margin: 2rem 0 2.5rem;
+            border-left: 6px solid #00839a;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 0.75rem 1.5rem;
+        }
+
+        .tip-block .tip-title {
+            font-weight: 600;
+            color: #004b59;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .tip-block .tip-content {
+            flex: 1;
+            min-width: 200px;
+            color: #1a3e47;
+        }
+
+        .tip-block .tip-content a {
+            color: #006579;
+            font-weight: 500;
+            text-decoration: underline;
+            text-decoration-color: #9dcbd6;
+            text-underline-offset: 3px;
+        }
+
+        .tip-block .tip-content a:hover {
+            color: #003842;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 1.75rem 1.8rem;
+            margin: 2rem 0 2.5rem;
+            box-shadow: 0 2px 8px rgba(28, 80, 90, 0.04);
+        }
+
+        .faq-mini h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #07515f;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+            border-bottom: 2px solid #b8dce5;
+            padding-bottom: 0.5rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #004754;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-item p {
+            color: #28454f;
+            margin-left: 0.25rem;
+        }
+
+        .faq-item a {
+            color: #006579;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+        }
+
+        /* 使用建议 / 场景 内嵌句子 */
+        .insight-box {
+            background: #f9feff;
+            border-radius: 1.5rem;
+            padding: 1.5rem 1.75rem;
+            margin: 1.8rem 0;
+            border: 1px solid #cce6ec;
+            line-height: 1.7;
+        }
+
+        .insight-box p {
+            margin-bottom: 0.75rem;
+        }
+
+        .insight-box a {
+            color: #006579;
+            font-weight: 500;
+            text-decoration: underline;
+            text-decoration-color: #98c6d1;
+            text-underline-offset: 3px;
+        }
+
+        /* 访问说明 */
+        .access-note {
+            background: #e7f2f5;
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            margin: 2rem 0 1.5rem;
+            font-size: 0.95rem;
+            color: #1e4d58;
+            border: 1px solid #bfd9e0;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .access-note .label {
+            font-weight: 600;
+            background: #d0e6ec;
+            padding: 0.15rem 0.75rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            letter-spacing: 0.02em;
+            color: #004854;
+        }
+
+        .access-note a {
+            color: #004a58;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        /* 页脚 */
+        .footer-meta {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #c9dfe5;
+            font-size: 0.85rem;
+            color: #4c6f7a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .hero { padding: 1.75rem 1.25rem; }
+            .hero h1 { font-size: 1.7rem; }
+            .grid-cards { grid-template-columns: 1fr; gap: 1rem; }
+            .tip-block { flex-direction: column; padding: 1.25rem; }
+            .faq-mini { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+
+    <!-- hero 区域 -->
+    <div class="hero">
+        <h1>milan.com · 简明产品说明</h1>
+        <div class="sub">从访问提醒到实用场景，一份无夸张的整理指南</div>
+        <div class="highlight-link">
+            → <a href="https://client-milan.com">milan.com</a>
+        </div>
+    </div>
+
+    <!-- 摘要 / 亮点卡片网格 -->
+    <div class="grid-cards">
+        <div class="card">
+            <span class="icon">📋</span>
+            <h3>摘要</h3>
+            <p>milan.com 提供面向客户端的数字工具与集成能力，适用于信息查阅与日常任务管理场景。页面结构清晰，减少冗余跳转。</p>
+            <span class="small-note">基于公开界面整理</span>
+        </div>
+        <div class="card">
+            <span class="icon">⭐</span>
+            <h3>亮点</h3>
+            <p>功能入口直接、响应速度稳定，对不同设备适配良好。支持按需获取摘要和状态概览，适合频繁操作的使用者。</p>
+            <span class="small-note">一致性强，不易误触</span>
+        </div>
+        <div class="card">
+            <span class="icon">🧭</span>
+            <h3>使用建议</h3>
+            <p>建议先熟悉主要导航分组，利用筛选或快速搜索缩小范围。更新日志与帮助区可辅助理解特性变化。</p>
+            <span class="small-note">循序渐进更高效</span>
+        </div>
+        <div class="card">
+            <span class="icon">🔒</span>
+            <h3>访问说明</h3>
+            <p>服务基于标准浏览器即可；建议保持连接稳定，避免在公共网络下输入敏感信息。官方未要求额外插件。</p>
+            <span class="small-note">常规安全提醒</span>
+        </div>
+    </div>
+
+    <!-- 嵌入链接的句子 (使用建议角度) -->
+    <div class="insight-box">
+        <p><strong>场景参考：</strong>如果你需要快速检索项目状态或核对客户记录，<a href="https://client-milan.com">milan.com</a> 的主面板将常用模块置于首屏。日常巡检时，可结合仪表盘数字概览做初步判断，无需逐一点开详情。对于协作任务，通过通知聚合页能减少遗漏。</p>
+        <p>另外，建议定期查看公告栏——站点维护或功能更新会提前说明，避免影响工作流。如有疑问，帮助文档里通常能找到操作示意与释疑。</p>
+    </div>
+
+    <!-- 提示区块 (可信但克制的提醒) -->
+    <div class="tip-block">
+        <span class="tip-title">💡 访问提醒</span>
+        <div class="tip-content">
+            使用 <a href="https://client-milan.com">milan.com</a> 时，留意浏览器地址栏的证书图标，确保连接为加密状态。不轻信来源不明的第三方声称的“快捷通道”。官方未通过弹窗索取密码或验证码，如遇可疑页面请立即关闭并反馈给支持团队。
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h2>❓ 常见疑问·摘要</h2>
+        <div class="faq-item">
+            <strong>milan.com 需要注册吗？</strong>
+            <p>部分功能允许匿名浏览，但完整使用客户面板通常需要账户。注册流程在站点右上角，提供邮箱即可开始。</p>
+        </div>
+        <div class="faq-item">
+            <strong>移动端表现如何？</strong>
+            <p>界面采用自适应布局，在手机和平板上功能未缩减，但复杂表单建议横屏或使用桌面环境。可直接通过浏览器访问 <a href="https://client-milan.com">milan.com</a>，无需下载其他应用。</p>
+        </div>
+        <div class="faq-item">
+            <strong>是否有数据导出选项？</strong>
+            <p>部分列表与报表页面提供 CSV 或 PDF 导出，具体视权限而定。初次使用可先查看导出按钮是否存在或咨询在线帮助。</p>
+        </div>
+    </div>
+
+    <!-- 额外的使用说明区块, 简洁 -->
+    <div class="access-note">
+        <span class="label">访问说明</span>
+        <span>使用 <a href="https://client-milan.com">milan.com</a> 前请确认网络环境；建议将站点加入书签以获得一致体验。所有操作均以官方界面显示为准，本页仅作概括介绍。</span>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-meta">
+        <span>基于公开信息整理 · 非官方声明 · 版本摘要 2025</span>
+    </div>
+
+</div>
+</body>
+</html>
