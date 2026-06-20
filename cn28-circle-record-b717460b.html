@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28圈 · 一种自然的观察方式</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f2f2;
+            color: #1e1e1e;
+            line-height: 1.6;
+            padding: 0 1.2rem;
+        }
+
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2.4rem 0 3.6rem;
+        }
+
+        /* 卡片通用 */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e0ddd8;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            padding: 2rem 1.8rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+        }
+
+        /* Hero 区 */
+        .hero {
+            text-align: center;
+            padding: 3.6rem 1.8rem 2.6rem;
+            background: #ffffff;
+            border-radius: 28px;
+            border: 1px solid #e0ddd8;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+            margin-bottom: 2.4rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #2c2c2c;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #4b4b4b;
+            max-width: 580px;
+            margin: 0 auto;
+            font-weight: 380;
+        }
+
+        .hero .sub {
+            margin-top: 1.4rem;
+            font-size: 0.95rem;
+            color: #6b6b6b;
+            border-top: 1px solid #ecece6;
+            padding-top: 1.4rem;
+            display: inline-block;
+        }
+
+        /* 区块标题 */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 450;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.01em;
+            color: #2a2a2a;
+        }
+
+        .section-sub {
+            color: #5a5a5a;
+            margin-bottom: 1.6rem;
+            font-size: 0.95rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+        }
+
+        .feature-item {
+            background: #fafaf8;
+            padding: 1.2rem 1.4rem;
+            border-radius: 16px;
+            border: 1px solid #eae8e2;
+            transition: all 0.15s;
+        }
+
+        .feature-item:hover {
+            background: #f6f5f1;
+            border-color: #d6d3ca;
+        }
+
+        .feature-item h3 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            color: #2d2d2d;
+        }
+
+        .feature-item p {
+            font-size: 0.92rem;
+            color: #4f4f4f;
+        }
+
+        .desc-text {
+            font-size: 1rem;
+            color: #3e3e3e;
+            max-width: 720px;
+        }
+
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #ecebe6;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 480;
+            font-size: 1rem;
+            color: #2b2b2b;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-answer {
+            font-size: 0.9rem;
+            color: #5a5a5a;
+            padding-left: 0.4rem;
+        }
+
+        .bottom-link {
+            text-align: center;
+            padding: 1.8rem 0 0.4rem;
+            font-size: 0.95rem;
+            color: #4d4d4d;
+            border-top: 1px solid #e0ddd8;
+            margin-top: 1.2rem;
+        }
+
+        .bottom-link a {
+            color: #2b6a6a;
+            text-decoration: none;
+            border-bottom: 1px solid #bccbcb;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .bottom-link a:hover {
+            border-bottom-color: #2b6a6a;
+            color: #1b4f4f;
+        }
+
+        .inline-link {
+            color: #2b6a6a;
+            text-decoration: none;
+            border-bottom: 1px solid #c7d6d6;
+            transition: border-color 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #2b6a6a;
+        }
+
+        .note {
+            background: #f6f5f0;
+            border-radius: 14px;
+            padding: 1.2rem 1.6rem;
+            border-left: 4px solid #bccbcb;
+            font-size: 0.9rem;
+            color: #3c3c3c;
+            margin: 1.8rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .card {
+                padding: 1.4rem 1.2rem;
+            }
+            .hero {
+                padding: 2.4rem 1.2rem;
+            }
+            body {
+                padding: 0 0.8rem;
+            }
+        }
+
+        .spacer-sm {
+            height: 0.6rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 区 -->
+    <div class="hero">
+        <h1>28圈</h1>
+        <p>一个围绕「圈」展开的内容站点，整理观点、线索与日常观察。不追热点，只留沉淀下来的片段。</p>
+        <div class="sub">从关键词出发 · 缓慢但持续地记录</div>
+    </div>
+
+    <!-- 优势区：两个卡片网格 -->
+    <div class="card">
+        <div class="section-title">这个站点在做的事</div>
+        <div class="grid-2">
+            <div class="feature-item">
+                <h3>主题碎片</h3>
+                <p>围绕“28”与“圈”的概念，收集散落在各处的讨论、比喻和视角。</p>
+            </div>
+            <div class="feature-item">
+                <h3>没有算法干预</h3>
+                <p>内容按时间整理，不推荐、不排行，只呈现原本的样貌。</p>
+            </div>
+            <div class="feature-item">
+                <h3>短叙事为主</h3>
+                <p>比起长篇分析，更偏爱简洁的转述与片段式记录，留出解读余地。</p>
+            </div>
+            <div class="feature-item">
+                <h3>不定期更新</h3>
+                <p>不承诺频率，更新节奏随材料与心绪自然流动。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 说明区：一段叙述 -->
+    <div class="card">
+        <div class="section-title">从一个关键词开始</div>
+        <p class="desc-text">
+            「28圈」这个名字最初来自一次偶然的组合。数字 28 像是某些周期里反复出现的节拍，而「圈」可以是一个范围、一种回环，也可以是一个没有边界的比喻。站点里收录的文字大多围绕着这类意象展开：循环、边界、重复与差异。偶尔也会出现一些与主题只有微弱关联的内容——那些被保留下来的原因是它们自己产生了某种“圈”的痕迹。<br><br>
+            如果你愿意，可以把这里看作一个缓慢生长的笔记本，每一页都标着同一个词，但每一页写的都不太一样。
+        </p>
+        <div class="note">
+            ⚲ 最近更新的一则笔记标题是：「圈与线之间的空隙」——讨论的是那些既不完全闭合也不彻底开放的结构。
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="card">
+        <div class="section-title">几个简短的说明</div>
+        <div class="faq-item">
+            <div class="faq-question">这里的内容有固定的主题吗？</div>
+            <div class="faq-answer">没有严格定义。大部分内容围绕“圈”的语义展开，但也会包含随笔、摘录和偶尔的翻译。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">可以随意转载或引用吗？</div>
+            <div class="faq-answer">引用少量内容请注明出处。整篇或大量复制暂时不建议。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">为什么叫“圈”而不是其他词？</div>
+            <div class="faq-answer">因为这个词足够简单，又足够模糊。它可以包含几何、社交、叙事、循环，甚至心理上的边界。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">会有互动或评论区吗？</div>
+            <div class="faq-answer">目前没有计划。这个站点更接近单向发布，偶尔会通过邮件接收反馈。</div>
+        </div>
+    </div>
+
+    <!-- 底部链接 + 自然嵌入 a 标签 -->
+    <div class="bottom-link">
+        如果你对这个持续的记录感兴趣，可以随时来看看 <a href="https://cn28--circle.com">28圈</a>。
+        站点没有通知机制，但内容会慢慢生长。
+    </div>
+
+</div>
+</body>
+</html>
